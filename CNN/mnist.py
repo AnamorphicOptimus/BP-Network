@@ -1,4 +1,3 @@
-# Copyright (c) Ye Liu. All rights reserved.
 
 import torch
 import torch.nn as nn

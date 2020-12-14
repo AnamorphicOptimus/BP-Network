@@ -2,18 +2,15 @@ import os
 import numpy as np
 from bp.mnist import mnist
 from bp.bpModel import bpNet
-from bp.testFile import testFile
+from bp.checkFile import checkFile
 import time
 import matplotlib.pyplot as plt
 
-# 新建mnist数据集对象，初始化数据集
-#print("path:", os.path)
-
 """
-# 可调参数：
+# Tunable Parameter:
 ## 1） hiddenLayersSize=[100, 50] --bpNet
 ## 2） weightInitStd=0.01         --bpNet
-## 3） update函数中的learningrate  --bpNet.update
+## 3） learningrate in def:update  --bpNet.update
 ## 4)  batchsize=100
  
 """
@@ -23,24 +20,24 @@ def main(config,fileName = 'data'):
 	Start = time.time()
 	msTrain = mnist()
 	msTest = mnist(kind="t10k")
-	# 提取mnist数据
+	# Extract Mnist data
 	trainImg = msTrain.images
 	trainLabel = msTrain.oneHotLabels
 	testImg = msTest.images
 	testLabel = msTest.oneHotLabels
-	# 训练数据大小
+	# Training data size
 	trainSize = trainImg.shape[0]
-	# 训练批大小
+	# Training batch size
 	batchSize = config['batchSize']
-	# 迭代次数
+	# Number of iterations
 	itersNum = config['itersNum']
-	# 学习率
+	# Learning rate
 	learningRate = config['learningRate']
-	# 轮数
+	# Iter per epoch
 	iterPerEpoch = max((trainSize / batchSize), 1)
-	# bp初始化
+	# Initialize bp
 	network = bpNet(hiddenLayersSize=config['hiddenLayersSize'])
-	#开始训练模型
+	# start training model
 	trainA=[]
 	testA=[]
 	print("iterPerEpoch:",iterPerEpoch)
@@ -51,17 +48,17 @@ def main(config,fileName = 'data'):
 	        testAcc = network.accuracy(testImg, testLabel)
 	        trainA.append(trainAcc)
 	        testA.append(testAcc)
-	        print("训练精度: %.5f  测试精度: %.5f" % (trainAcc, testAcc))
-	    # 获取随机选取的索引
+	        print("Train Acc: %.5f  Test Acc: %.5f" % (trainAcc, testAcc))
+	    # Get randomly selected index
 	    trainIndexs = np.random.choice(trainSize, batchSize)
 	    imgs = trainImg[trainIndexs]
 	    labels = trainLabel[trainIndexs]
 	    network.update(imgs, labels, lr=learningRate)
 	    
 	End = time.time()
-	print("BP Time Consuming:%.2f秒"%(End-Start))
+	print("BP Time Consuming:%.2fs"%(End-Start))
 
-	##作图部分
+	# Plot
 	g = [trainA,testA]
 	colors=["blue","orange"]
 	labels=["trainAcc","testAcc"]

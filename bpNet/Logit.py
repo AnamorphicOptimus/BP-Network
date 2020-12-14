@@ -30,9 +30,9 @@ def main():
             sum+=1
     print('Logistics Test set score: %f' % (sum/10000.))
     end = time.time()
-    print("Logit Time consuming:%.2f秒"%(end-start))#89.78s
+    print("Logit Time consuming:%.2fs"%(end-start))#89.78s
 
-    #开始调整参数
+    # Simple Tuning Process
     # print("Start param adjusting...")
     # l1test=[]
     # l2test=[]
@@ -63,7 +63,7 @@ def main():
     # plt.figure(figsize=(6,6))
     # for i in range(len(graph)):
     #     plt.plot(np.linspace(0.05,1, 19),graph[i], color[i], label = label[i])
-    # plt.legend(loc=4) #loc = 4, 表示右下角
+    # plt.legend(loc=4) 
 
 if __name__ == '__main__':
 	main()

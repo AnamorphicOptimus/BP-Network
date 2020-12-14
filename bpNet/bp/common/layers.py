@@ -1,28 +1,28 @@
 import numpy as np
-from .functions import softmax, crossEntropyError
+from functions import softmax, crossEntropyError
 
 
-# relu层实现
+# Relu layers
 class reLu:
     def __init__(self):
         self.mask = None
 
-    # 前向传播（计算结果）
+    # Forward propagation 
     def forward(self, x):
         self.mask = (x <= 0)
-        # numpy数组拷贝
+        # numpy array copy
         result = x.copy()
         result[self.mask] = 0
         return result
 
-    # 反向传播（求导）
+    # Backward propagation
     def backward(self, d):
         result = d.copy()
         result[self.mask] = 0
         return result
 
 
-# sigmoid层实现
+# Sigmoid Layers
 class sigmoid:
     def __init__(self):
         pass
@@ -35,7 +35,7 @@ class sigmoid:
         return d * self.y * (1.0 - self.y)
 
 
-# affine层的实现
+# Affine Layers
 class affine:
     def __init__(self, weight, bias):
         self.x = None
@@ -44,11 +44,8 @@ class affine:
         self.xD = None
         self.weightD = None
         self.biasD = None
-        # self.original_x_shape = None;
 
     def forward(self, x):
-        # self.original_x_shape = x.shape;
-        # x = x.reshape(x.shape[0], -1);
 
         self.x = x
         return np.dot(x, self.weight) + self.bias
@@ -57,7 +54,6 @@ class affine:
         self.xD = np.dot(d, self.weight.T)
         self.weightD = np.dot(self.x.T, d)
         self.biasD = np.sum(d, axis=0)
-        # self.xD = self.xD.reshape(* self.original_x_shape);
 
         return self.xD
 
@@ -81,11 +77,11 @@ class affineReLu:
 class softmaxLoss:
     def __init__(self):
         self.loss = None
-        # softmax函数的输出
+        # outputs of softmax
         self.y = None
         self.t = None
 
-    # 前向传播，这里分别计算了softmax输出和交叉熵，返回softmax输出
+    # Forward propagation: the softmax output and cross entropy are calculated separately
     def forward(self, x, t):
         self.t = t
         self.y = softmax(x)
@@ -94,11 +90,11 @@ class softmaxLoss:
 
     def backward(self, dout=1):
         batchSize = self.t.shape[0]
-        # 如果是onthot模式
+        # is onehot?
         if (self.t.size == self.y.size):
-            # 除以批大小，传递的是单个数据误差
-            # 因为进行的是两个相同的矩阵的减法，求出的每一个导数值都是独立的，除一下批大小
-            # 这个要画计算图才能理解
+            # Divide by the batch size, and pass a single data error
+            # Because the subtraction of two identical matrices is performed, 
+            # each derivative value obtained is independent, divided by the batch size
             dx = (self.y - self.t) / batchSize
         else:
             dx = self.y.copy()

@@ -3,7 +3,6 @@ from bp.common.layers import affineReLu, affine, softmaxLoss
 
 
 class bpNet:
-    # 构造函数
     def __init__(
         self,
         inputSize=784,
@@ -20,31 +19,31 @@ class bpNet:
         self.hiddenLayers = self.initHiddenLayers()
         self.lastLayer = self.initOutputLayer()
 
-    # 使用神经网络进行预测
-    # 此方法没有调用输出层，即没有调用softmax以及损失函数
+    # Use neural network for prediction
+    # This method does not call the output layer, that is, does not call softmax and loss function
     def predict(self, x):
         y = x.copy()
         for layer in self.hiddenLayers:
             y = layer.forward(y)
         return y
 
-    # 根据输入数据以及监督数据计算损失函数
-    # 同时也会对神经网络进行一次整体数据流动
+    # Calculate the loss function based on the input data and the supervision data
+    # an overall data flow will be performed in the neural network
     def loss(self, x, t):
         y = self.predict(x)
         self.lastLayer.forward(y, t)
         return self.lastLayer.loss
 
-    # 反向传播计算梯度
+    # Backpropagation and Gradient calculation
     def gradient(self, x, t):
         self.loss(x, t)
         d = 1
         d = self.lastLayer.backward(d)
-        # 倒序对于隐藏层的各个参数求导
+        # Reverse order for derivation of each parameter of the hidden layer
         for index in range(len(self.hiddenLayers) - 1, -1, -1):
             d = self.hiddenLayers[index].backward(d)
 
-    # 根据保存在各层的梯度更新神经网络参数
+    # Update the neural network parameters according to the gradients stored in each layer
     def update(self, x, t, lr=0.1):
         self.gradient(x, t)
         for layer in self.hiddenLayers:
@@ -57,7 +56,7 @@ class bpNet:
                 layer.weight -= layer.weightD * lr
                 layer.bias -= layer.biasD * lr
 
-    # 计算网络预测精度
+    # Calculate network prediction accuracy
     def accuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)
@@ -65,12 +64,12 @@ class bpNet:
             t = np.argmax(t, axis=1)
         return np.sum(y == t) / float(x.shape[0])
 
-    # region 神经网络初始化相关方法
-    # 构建输出层
+    # region: neural network initialization related methods
+    # Build the output layer
     def initOutputLayer(self):
         return softmaxLoss()
 
-    # 根据初始化的参数顺序构建隐藏层
+    # Construct the hidden layer according to the initial parameter order
     def initHiddenLayers(self):
         layers = []
         for index, value in enumerate(self.params):
@@ -84,7 +83,7 @@ class bpNet:
             layers.append(layer)
         return layers
 
-    # 顺序初始化各层参数
+    # Initialize parameters of all layers in order
     def initParams(self):
         params = []
         layerSizeList = [self.inputSize
@@ -97,10 +96,10 @@ class bpNet:
                 params.append(param)
         return params
 
-    # 初始化层参数，包括权重和偏置
+    # Initialize layer parameters, including weight and bias
     def initLayerParam(self, inputSize, outputSize):
         param = {}
-        # 利用高斯分布初始化权重矩阵，这里乘以了weightInitStd
+        # Use Gaussian distribution to initialize the weight matrix, here is multiplied by weightInitStd
         param["weight"] = self.weightInitStd * np.random.randn(
             inputSize, outputSize)
         param["bias"] = np.zeros(outputSize)

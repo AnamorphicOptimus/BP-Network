@@ -7,14 +7,13 @@ path = os.path.join(os.path.abspath(os.getcwd()), 'data')
 
 
 class mnist:
-    # 构造函数
     def __init__(self,
                  kind="train",
                  normalize=True,
                  flatten=True,
                  oneHotLabel=True):
 
-        self.kind = kind  # 测试数据集kind="t10k"
+        self.kind = kind  # Test data: kind="t10k"
         self.path = path
         print("Strat loading data...")
 
@@ -55,8 +54,8 @@ class mnist:
         return newData
 
     def plot_img(self, idx):
-        # showImage是一组28*28的灰度图片
-        # 数组每个单元值在0~255之间 0代表白色 255代表黑色
+        # showImage is a set of 28*28 grayscale images
+        # The value of each element of the array is between 0 and 255 0 means white 255 means black
         fig = plt.gcf()
         print("set image config...")
         fig.set_size_inches(5, 5)

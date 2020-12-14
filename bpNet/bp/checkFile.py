@@ -1,5 +1,5 @@
 
-#查看是否有data文件夹
+# Check if there is a data folder
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -21,9 +21,9 @@ def uzip_data(target_path):
 	# uzip mnist data
 	cmd = ['gzip', '-d', target_path]
 	print('Unzip ', target_path)
-	subprocess.call(cmd)
+	subprocess.call(cmd)1
 
-def testFile(testFilename):
+def checkFile(testFilename):
     data_dir = os.path.join(os.path.abspath(os.getcwd()),testFilename)
     print(data_dir)
     if not os.path.exists(data_dir):

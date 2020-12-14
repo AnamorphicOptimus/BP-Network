@@ -33,21 +33,21 @@ The following findings:<br>
 ```
 .
 |-- CNN
-|   |-- config.py 								              // CNN configuration       
-|   `-- mnist.py    							              // MNIST dataset
+|   |-- config.py 								// CNN configuration       
+|   `-- mnist.py    							// MNIST dataset
 |-- bpNet                                       // BP-Network Source Code
-|   |-- Logit.py                                // a separate file for logit regression 
-|   |-- RandomForest.py                         // a separate file for random forest
+|   |-- Logit.py                                // a separate file for logit regression
+|   |-- RandomForest.py                         // a separate file for random forest 
 |   |-- SVM.py                                  // a separate file for SVM model
-|   |-- bp<br> 
-|   |   |-- bpModel.py                          // BP layers integration
-|   |   |-- checkFile.py                        // check MNIST data
-|   |   |-- common                             
-|   |   |   |-- functions.py                     
-|   |   |   `-- layers.py<br> 
+|   |-- bp
+|   |   |-- bpModel.py                          // BP layers integration 
+|   |   |-- checkFile.py                        // check MNIST data 
+|   |   |-- common                              
+|   |   |   |-- functions.py                   
+|   |   |   `-- layers.py
 |   |   `-- mnist.py                            // MNIST data class
-|   `-- main.py                                 // BP model run 
-`-- README.md <br> 
+|   `-- main.py                                 // BP model run
+`-- README.md 
 
 * 7 directories, 26 files 
 ```

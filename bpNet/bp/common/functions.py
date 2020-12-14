@@ -1,7 +1,7 @@
 import numpy as np
 
 
-# The old softmax function only supports a single dimension. 
+# The origin softmax function only supports a single dimension. 
 # The function of this definition is to take the probability distribution of 0~1
 def softmaxOld(x):
     c = np.max(x)

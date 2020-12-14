@@ -13,14 +13,14 @@ def main():
     Xtest = msTestSVM.images
     Ytest = msTestSVM.labels
     
-    #SVM模型初始化
+    # Initialize SVM
     print("Default SVM Model loading...")
     start = time.time()
     clf=  svm.SVC()
     clf.fit(Xtrain,Ytrain)
     predict = clf.predict(Xtest)
     score = metrics.accuracy_score(Ytest,predict)
-    #测试精度
+    # Test Acc
     report = metrics.accuracy_score(Ytest,predict)
     end = time.time()
     print("SVM Time consuming:%.2f秒"%(end-start))

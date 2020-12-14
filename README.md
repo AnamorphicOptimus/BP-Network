@@ -33,8 +33,8 @@ The following findings:<br>
 ```
 .
 |-- CNN
-|   |-- config.py 								// CNN configuration       
-|   `-- mnist.py    							// MNIST dataset
+|   |-- config.py 							     
+|   `-- mnist.py    							
 |-- bpNet                                       // BP-Network Source Code
 |   |-- Logit.py                                // a separate file for logit regression
 |   |-- RandomForest.py                         // a separate file for random forest 

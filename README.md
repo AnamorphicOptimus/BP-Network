@@ -1,27 +1,56 @@
-# BP神经网络
+# BP-Network
 
-## 数据集：
-基于MNIST数据集
+## Introduction
 
-## 改进细节：
-1.将激活函数从常用的sigmoid函数改为了Relu函数<br>
-2.其次考虑到该问题实际为多分类问题，引入softmax作为输出层以及交叉熵作为损失函数<br>
-3.最后引入批处理，将训练集分为训练批进行训练，提升了神经网络的运行效率<br>
+BP-Network is an experimental project that uses BP neural network as the core model to multi-classify MNIST handwritten digit sets. And I realized the construction of BP neural network and the improvement based on the source code through python.
+Finally, the improved BP model will be compared with common machine learning and deep learning models, such as random forest and convolutional neural network, to make a comprehensive comparison of model effects and training time.
 
-## 模型对比结论：
-本实验中详细探讨了参数调整对模型效果以及训练时间的影响<br>
-有如下发现：<br>
-1.发现该模型的训练时间对迭代次数以及隐藏层神经元个数较为敏感<br>
-2.隐藏层层数、学习率以及迭代次数对训练效果影响较大<br>
-3.将改进BP模型与常见的机器学习以及深度学习模型，如随机森林和卷积神经网络等，<br>
-  进行模型效果和训练时间的综合对比，改进后的BP神经网络在两方面都表现突出。<br>
+## Improvement Details:
 
-## 运行结果：
+- 1. Change the activation function from the commonly used sigmoid function to the Relu function<br>
+- 2. Secondly, considering that the problem is actually a multi-classification problem, softmax is introduced as the output layer and cross entropy as the loss function<br>
+- 3. Finally, batch processing is introduced, and the training set is divided into training batches for training, which improves the operating efficiency of the neural network.<br>
 
-| 模型名称 | 测试集效果 | 训练时间（秒）|
+## Experimental Results
+
+| Model | Test Acc | Train Time (s)|
 | ------ | ------ | ------ |
 | BP | 0.97540 | 35.71 |
 | Logistics | 0.92030 | 105.76 |
 | SVM | 0.94460 | 935.98 |
 | RF | 0.94910 | 5.30 |
 | CNN | 0.99200 | 245.98 |
+
+## Experimental Conclusions
+
+In this experiment, the influence of parameter adjustment on the model effect and training time is discussed in detail<br>
+The following findings:<br>
+- 1. It is found that the training time of the model is more sensitive to the number of iterations and the number of neurons in the hidden layer<br>
+- 2. The number of hidden layers, the learning rate and the number of iterations have a greater impact on the training effect<br>
+- 3. Compare improved BP model with common machine learning and deep learning models, such as random forest and convolutional neural network, in term of model effects and training time. The result shows that the improved BP neural network has outstanding performance in both aspects. <br>
+
+## Contents
+.
+|-- CNN
+|   |-- config.py 								// CNN configuration          
+|   `-- mnist.py    							// MNIST dataset
+|-- bpNet                                       // BP-Network Source Code
+|   |-- Logit.py                                // a separate file for logit regression
+|   |-- RandomForest.py                         // a separate file for random forest
+|   |-- SVM.py                                  // a separate file for SVM model
+|   |-- bp
+|   |   |-- bpModel.py                          // BP layers integration
+|   |   |-- checkFile.py                        // check MNIST data
+|   |   |-- common                             
+|   |   |   |-- functions.py                    
+|   |   |   `-- layers.py
+|   |   `-- mnist.py                            // MNIST data class
+|   `-- main.py                                 // BP model run
+`-- README.md 
+* 7 directories, 26 files *
+
+## Operating instructions
+
+- 1. ./bpNet/main.py: run this file for BP-Network model operation
+- 2. ./bpNet/Logit.py, RandomForest.py. SVM.py is for Logit regression, random forest model and SVM respectively
+- 3. ./CNN/mnist.py is for CNN model running

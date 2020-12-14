@@ -30,6 +30,7 @@ The following findings:<br>
 - 3. Compare improved BP model with common machine learning and deep learning models, such as random forest and convolutional neural network, in term of model effects and training time. The result shows that the improved BP neural network has outstanding performance in both aspects. <br>
 
 ## Contents
+```
 .
 |-- CNN<br> 
 |   |-- config.py 								// CNN configuration<br>       
@@ -49,7 +50,7 @@ The following findings:<br>
 `-- README.md <br> 
 
 * 7 directories, 26 files 
-
+```
 ## Operating instructions
 
 - 1. ./bpNet/main.py: run this file for BP-Network model operation

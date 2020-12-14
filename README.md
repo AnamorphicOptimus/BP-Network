@@ -31,23 +31,24 @@ The following findings:<br>
 
 ## Contents
 .
-|-- CNN
-|   |-- config.py 								// CNN configuration          
-|   `-- mnist.py    							// MNIST dataset
-|-- bpNet                                       // BP-Network Source Code
-|   |-- Logit.py                                // a separate file for logit regression
-|   |-- RandomForest.py                         // a separate file for random forest
-|   |-- SVM.py                                  // a separate file for SVM model
-|   |-- bp
-|   |   |-- bpModel.py                          // BP layers integration
-|   |   |-- checkFile.py                        // check MNIST data
-|   |   |-- common                             
-|   |   |   |-- functions.py                    
-|   |   |   `-- layers.py
-|   |   `-- mnist.py                            // MNIST data class
-|   `-- main.py                                 // BP model run
-`-- README.md 
-* 7 directories, 26 files *
+|-- CNN<br> 
+|   |-- config.py 								// CNN configuration<br>       
+|   `-- mnist.py    							// MNIST dataset<br> 
+|-- bpNet                                       // BP-Network Source Code<br> 
+|   |-- Logit.py                                // a separate file for logit regression<br> 
+|   |-- RandomForest.py                         // a separate file for random forest<br> 
+|   |-- SVM.py                                  // a separate file for SVM model<br> 
+|   |-- bp<br> 
+|   |   |-- bpModel.py                          // BP layers integration<br> 
+|   |   |-- checkFile.py                        // check MNIST data<br> 
+|   |   |-- common                             <br> 
+|   |   |   |-- functions.py                    <br> 
+|   |   |   `-- layers.py<br> 
+|   |   `-- mnist.py                            // MNIST data class<br> 
+|   `-- main.py                                 // BP model run<br> 
+`-- README.md <br> 
+
+* 7 directories, 26 files 
 
 ## Operating instructions
 

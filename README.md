@@ -51,7 +51,7 @@ The following findings:<br>
 
 * 7 directories, 26 files 
 ```
-## Operating instructions
+## Operating Instructions
 
 - 1. ./bpNet/main.py: run this file for BP-Network model operation
 - 2. ./bpNet/Logit.py, RandomForest.py. SVM.py is for Logit regression, random forest model and SVM respectively
